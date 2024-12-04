@@ -36,7 +36,7 @@ cid:image001.png@01DB464A.B59A8AD0![image](https://github.com/user-attachments/a
 Exécuter la commande ./run.sh
 
 Entrer 3 pour le nombre de chunks. 
-Si vous souhaitez faire exécuter le worldcount sur plus que 3 machines, modifiez le fichier machine.txt et saisissez le nombre de machine que votre fichier machines.txt contient
+Si vous souhaitez exécuter le worldcount sur plus que 3 machines, modifiez le fichier machine.txt et saisissez le nombre de machine que votre fichier machines.txt contient pour la valeur chunks.
 
 Si un mot de passe est demandé, la machine n'est pas disponible , utiliser une autre machine dans le fichier machines.txt
 
