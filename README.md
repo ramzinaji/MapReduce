@@ -29,6 +29,7 @@ J'ai utilisé trois structures intermédiaires pour stocker les données à chaq
 
 # Performance du système 
 
+cid:image001.png@01DB464A.B59A8AD0![image](https://github.com/user-attachments/assets/3db103fa-37e1-4da5-a5a0-dfbd7f504db5)
 
 
 # Comment exécuter 
