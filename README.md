@@ -39,6 +39,6 @@ Entrer 3 pour le nombre de chunks
 
 Si un mot de passe est demandé, la machine n'est pas disponible , utiliser une autre machine dans le fichier machines.txt
 
-Parfois il est nécessaire de rexécuter le code run.sh plusieurs fois, ATTENTION : il est possible qu'un mot de passe soit demandé pour l'exécution des scripts à distances
+Parfois il est nécessaire d'exécuter le code run.sh plusieurs fois. ATTENTION : il est possible qu'un mot de passe soit demandé pour l'exécution des scripts à distances dans ce cas là modifier le user du script et run et le mdp du script 
 
 
