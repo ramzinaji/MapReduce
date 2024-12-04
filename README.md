@@ -8,6 +8,7 @@ La fonction Map est la première étape de l'algorithme MapReduce. La phase Map 
 La sortie de la fonction Map est un ensemble de paires de clés et de valeurs sous la forme <Clé, Valeur>.
 
 Après la phase de mapping , on effectue une tache de shuflle et reduce sur chaque machine en parallèle.
+
 3. **Shuffle** - Prend les résulats de chauque map et on regroupe de les mots de même taille sur une même machine
 4. **Reduce** - On regoupe les résultats de chaque machine sur un même dictionnaire et on addition les occurences des clés identiques
 
@@ -17,12 +18,24 @@ Dans ce projet, j'ai choisi d'exploiter un répertoire partagé accessible à to
 
 J'ai utilisé trois structures intermédiaires pour stocker les données à chaque phase du traitement :
 
-1. mapped_i_n : Ce fichier JSON contient les résultats du mapping pour le split de la machine i sur n. Chaque machine génère ce fichier à partir de son propre traitement des données.
+1. **mapped_i_n** : Ce fichier JSON contient les résultats du mapping pour le split de la machine i sur n. Chaque machine génère ce fichier à partir de son propre traitement des données.
 
-2. Global_dico_file_i : Ce dictionnaire est organisé en sous-dictionnaires, chacun correspondant à une étape du shuffle. Pour remplir chaque sous-dictionnaire shuffle_k, on calcule le reste de la division euclidienne de la longueur du mot (len(mot)) par n. Si ce reste est égal à k, alors le mot est stocké dans le sous-dictionnaire shuffle_k. Ainsi, Global_dico_file_i a la structure suivante :
+2. **Global_dico_file_i** : Ce dictionnaire est organisé en sous-dictionnaires, chacun correspondant à une étape du shuffle. Pour remplir chaque sous-dictionnaire shuffle_k, on calcule le reste de la division euclidienne de la longueur du mot (len(mot)) par n. Si ce reste est égal à k, alors le mot est stocké dans le sous-dictionnaire shuffle_k. Ainsi, Global_dico_file_i a la structure suivante :
+
    Global_dico_file_i = { shuffle_1: {}, shuffle_2: {}, ..., shuffle_n: {}}
    Chaque sous-dictionnaire shuffle_k contient donc uniquement des mots dont la longueur est congruente à k modulo n (len(mot) % n == k).
 
-3. combine_global_dico : Ce dictionnaire est également composé de n sous-dictionnaires. Cette fois, l'objectif est de fusionner les sous-dictionnaires shuffle_k intermédiaires provenant de chaque dictionnaire Global_dico_file_i pour toutes les machines i dans l'intervalle [1, n]. Cela permet de rassembler les résultats du shuffle de toutes les machines.
+4. **combine_global_dico** : Ce dictionnaire est également composé de n sous-dictionnaires. Cette fois, l'objectif est de fusionner les sous-dictionnaires shuffle_k intermédiaires provenant de chaque dictionnaire Global_dico_file_i pour toutes les machines i dans l'intervalle [1, n]. Cela permet de rassembler les résultats du shuffle de toutes les machines.
+
+# Performance du système 
+
+
+
+# Comment exécuter 
+Exécuter la commande ./run.sh
+
+Entrer 3 pour le nombre de chunks
+
+Si un mot de passe est demandé, la machine n'est pas disponible , utiliser une autre machine dans le fichier machines.txt
 
 
