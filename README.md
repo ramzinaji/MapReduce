@@ -27,9 +27,9 @@ J'ai utilisé trois structures intermédiaires pour stocker les données à chaq
 
 4. **combine_global_dico** : Ce dictionnaire est également composé de n sous-dictionnaires. Cette fois, l'objectif est de fusionner les sous-dictionnaires shuffle_k intermédiaires provenant de chaque dictionnaire Global_dico_file_i pour toutes les machines i dans l'intervalle [1, n]. Cela permet de rassembler les résultats du shuffle de toutes les machines.
 
-# Performance du système 
+# Schéma du Système
 
-cid:image001.png@01DB464A.B59A8AD0![image](https://github.com/user-attachments/assets/3db103fa-37e1-4da5-a5a0-dfbd7f504db5)
+[image](https://github.com/user-attachments/assets/3db103fa-37e1-4da5-a5a0-dfbd7f504db5)
 
 
 # Comment exécuter 
