@@ -1,6 +1,6 @@
 import json
 
-file_path = "/cal/exterieurs/rnaji-24/MapReducePython/data/"
+file_path = "/cal/exterieurs/rnaji-24/MapReduce/data/"
 N=3
 
 data={}
@@ -48,5 +48,5 @@ for k in range(N):
     merge.update(merge_dico(merge_dico(data['machine_1']['shuffle_' + str(k+1)],data['machine_2']['shuffle_'+ str(k+1)]),data['machine_3']['shuffle_'+ str(k+1)]))
 
 # Sauvegarder le dictionnaire local de chaque machine dans un fichier JSON
-with open(f"/cal/exterieurs/rnaji-24/MapReducePython/data/merged_global_dico.json", "w", encoding="utf-8") as f:
+with open(f"/cal/exterieurs/rnaji-24/MapReduce/data/merged_global_dico.json", "w", encoding="utf-8") as f:
     json.dump(merge, f)

@@ -3,7 +3,7 @@ import sys
 output_no = sys.argv[1]
 total_chunks = sys.argv[2]
 print(output_no)
-data_location = "MapReducePython/data/"
+data_location = "MapReduce/data/"
 input_file_path = data_location+"split_"+str(output_no)+"_"+str(total_chunks)+".txt"
 mapped_dict = {}
 try:

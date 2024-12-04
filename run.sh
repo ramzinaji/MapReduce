@@ -6,12 +6,12 @@ START_TIME=$(ruby -e 'puts (Time.now.to_f * 1000).to_i')
 # Variables
 login="rnaji-24"
 localFolder="./"
-todeploy="MapReducePython/todeploy"
+todeploy="MapReduce/todeploy"
 deployed="todeploy"
 remoteFolder="mapreducedeployed"
 nameOfTheScript_map="map_local.py"
 nameOfTheScript_reduce="reduce_local.py"
-dataFolder="MapReducePython"
+dataFolder="MapReduce"
 
 # Lire les machines depuis le fichier machines.txt et les mettre dans un tableau
 machines=($(cat machines.txt))
@@ -40,7 +40,7 @@ read chunks
 # Phase de chunking
 echo "------------- INITIALISING CHUNKING SCRIPT OF INPUT TEXT FILE -------------\n"
 echo "$(pwd)"
-cd MapReducePython/orchestration
+cd MapReduce/orchestration
 echo "$(ls)"
 python3 main.py $chunks
 cd ..

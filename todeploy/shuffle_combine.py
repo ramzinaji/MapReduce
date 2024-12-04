@@ -5,7 +5,7 @@ import json
 # Récupération de l'index de la machine pour le nom de fichier
 index = int(sys.argv[1])# L'index passé en argument pour identifier la machine
 N = int(sys.argv[2])  # Nombre de machines / Dictionnaires globaux
-input_file_path = f"/cal/exterieurs/rnaji-24/MapReducePython/data/mapped_{index}_3.txt"
+input_file_path = f"/cal/exterieurs/rnaji-24/MapReduce/data/mapped_{index}_3.txt"
 
 
 Global_dico = {f'shuffle_{i + 1}': {} for i in range(N)}
@@ -37,7 +37,7 @@ with open(input_file_path, encoding='utf-8') as f:
 
 
 # Sauvegarder le dictionnaire local de chaque machine dans un fichier JSON
-with open(f"/cal/exterieurs/rnaji-24/MapReducePython/data/Global_dico_part_{index}.json", "w", encoding="utf-8") as f:
+with open(f"/cal/exterieurs/rnaji-24/MapReduce/data/Global_dico_part_{index}.json", "w", encoding="utf-8") as f:
     json.dump(Global_dico, f)
 
 

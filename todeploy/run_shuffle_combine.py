@@ -18,7 +18,7 @@ def run_script_on_remote(host, user, index):
     ssh.connect(hostname=host,port=port,username=user,password= mdp)
     
     # Commande pour exécuter process_data.py sur la machine distante
-    command = f"python3 /cal/exterieurs/rnaji-24/MapReducePython/todeploy/shuffle_combine.py {index} {N}"
+    command = f"python3 /cal/exterieurs/rnaji-24/MapReduce/todeploy/shuffle_combine.py {index} {N}"
     ssh.exec_command(command)
     ssh.close()
     print(f"Script lancé sur {host}")
