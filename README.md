@@ -11,4 +11,18 @@ Après la phase de mapping , on effectue une tache de shuflle et reduce sur chaq
 3. **Shuffle** - Prend les résulats de chauque map et on regroupe de les mots de même taille sur une même machine
 4. **Reduce** - On regoupe les résultats de chaque machine sur un même dictionnaire et on addition les occurences des clés identiques
 
-Dans ce projet, j'ai utilisé le fait que chaque machine avait un repertoire paratagé avec les autres machines de l'école pour éviter de faire des communications avec des sockets, je suis conscient que ce parti pris simplifie la tache mais l'objectif ici était de mettre en parralèle le ressources de plusieurs machines pour chaque étape du mapreduce.
+Dans ce projet, j'ai choisi d'exploiter un répertoire partagé accessible à toutes les machines de l'école afin d'éviter les communications via des sockets. Bien que cette approche simplifie la tâche, l'objectif principal était de paralléliser les ressources de plusieurs machines à chaque étape du processus MapReduce.
+
+
+
+J'ai utilisé trois structures intermédiaires pour stocker les données à chaque phase du traitement :
+
+1. mapped_i_n : Ce fichier JSON contient les résultats du mapping pour le split de la machine i sur n. Chaque machine génère ce fichier à partir de son propre traitement des données.
+
+2. Global_dico_file_i : Ce dictionnaire est organisé en sous-dictionnaires, chacun correspondant à une étape du shuffle. Pour remplir chaque sous-dictionnaire shuffle_k, on calcule le reste de la division euclidienne de la longueur du mot (len(mot)) par n. Si ce reste est égal à k, alors le mot est stocké dans le sous-dictionnaire shuffle_k. Ainsi, Global_dico_file_i a la structure suivante :
+   Global_dico_file_i = { shuffle_1: {}, shuffle_2: {}, ..., shuffle_n: {}}
+   Chaque sous-dictionnaire shuffle_k contient donc uniquement des mots dont la longueur est congruente à k modulo n (len(mot) % n == k).
+
+3. combine_global_dico : Ce dictionnaire est également composé de n sous-dictionnaires. Cette fois, l'objectif est de fusionner les sous-dictionnaires shuffle_k intermédiaires provenant de chaque dictionnaire Global_dico_file_i pour toutes les machines i dans l'intervalle [1, n]. Cela permet de rassembler les résultats du shuffle de toutes les machines.
+
+
